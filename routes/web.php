@@ -49,6 +49,10 @@ Route::post('searchProduct',[FrontendUserController::class,'searchProduct']);
 Route::post('add-to-wishlist',[WishlistController::class,'store']);
 Route::post('delete-wishlist-item',[WishlistController::class,'delete']);
 Route::resource('/cart',CartController::class);
+Route::post('add-rating',[RatingController::class,'store']);
+Route::post('/add-review',[ReviewController::class,'store']);
+Route::get('/add-review/{slug}/userreview',[ReviewController::class,'add']);
+Route::get('/edit-review/{slug}/userreview',[ReviewController::class,'edit']);
 Route::middleware('can:isUser')->group(function(){
     Route::post('/delete-cart-item',[CartController::class,'deleteprod']);
     Route::post('/update-cart',[CartController::class,'updatecart']);
@@ -57,10 +61,6 @@ Route::middleware('can:isUser')->group(function(){
     Route::get('/my-orders',[UserController::class,'index']);
     Route::get('/view-order/{id}',[UserController::class,'view']);
     Route::get('wishlist',[WishlistController::class,'index']);
-    Route::post('add-rating',[RatingController::class,'store']);
-    Route::get('/add-review/{slug}/userreview',[ReviewController::class,'add']);
-    Route::post('/add-review',[ReviewController::class,'store']);
-    Route::get('/edit-review/{slug}/userreview',[ReviewController::class,'edit']);
     Route::put('/update-review',[ReviewController::class,'update']);
     Route::post('/proccess-to-pay',[CheckoutController::class,'razorpay']);
     Route::get('profile/{id}',[ProfileController::class,'profile']);

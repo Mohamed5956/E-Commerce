@@ -65,8 +65,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <h4 class="px-2">Total : <span class="float-end">{{ $orders->total_price }}
-                                        $ </span></h4>
+                                <h4 class="px-2">Total : <span class="float-end">{{ $orders->total_price }} $ </span></h4>
                                 <div class="mt-5 px-2">
                                     <form action="{{ url('orders/' . $orders->id) }}" method="POST">
                                         @method('PUT')

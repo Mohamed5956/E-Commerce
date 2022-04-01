@@ -42,7 +42,6 @@ class CartController extends Controller
     {
 
         $product_id = $request->input('product_id');
-
         $product_qty = $request->input('product_qty');
         if(Gate::allows('isUser')){
             $prod_check = Product::where('id',$product_id)->first();

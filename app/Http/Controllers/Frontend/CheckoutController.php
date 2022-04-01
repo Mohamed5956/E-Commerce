@@ -20,18 +20,19 @@ class CheckoutController extends Controller
     {
         $old_cartItems = Cart::where('user_id', Auth::id())->get();
         foreach ($old_cartItems as $item) {
-            if (!Product::where('id', $item->prod_id)->where('quantity', '>=', $item->prod_qty)->exists()) {
+            if (!Product::where('id', $item->prod_id)->where('quantity', '>', $item->prod_qty)->exists())
+            {
                 $removeItem = Cart::where('user_id', Auth::id())->where('prod_id', $item->prod_id)->first();
                 $removeItem->delete();
             }
         }
 
         $cartItems = Cart::where('user_id', Auth::id())->get();
-        // $total_price = 0;
-        // foreach($cartItems as $item){
-        //     $total_price += $item->products->selling_price * $item->prod_qty;
-        // }
-        // $total_price = $total_price;
+        $total_price = 0;
+        foreach($cartItems as $item){
+            $total_price += $item->products->selling_price * $item->prod_qty;
+        }
+        $total_price = $total_price;
         return view('frontend.checkout', ['cart' => $cartItems]);
     }
 
@@ -55,7 +56,7 @@ class CheckoutController extends Controller
         $cartItems_total = Cart::where('user_id',Auth::id())->get();
         foreach($cartItems_total as $prod)
         {
-            $total += $prod->products->selling_price;
+            $total += $prod->products->selling_price * $prod->prod_qty ;
         }
         $order->total_price = $total;
         $order->tracking_no = 'Order' . rand(1111, 9999);

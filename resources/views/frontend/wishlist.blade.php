@@ -37,12 +37,11 @@
                                 </div>
                                 <div class="col-md-2 my-auto">
                                     <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
-                                    @if ($item->products->quantity > $item->prod_qty)
+                                    @if ($item->products->quantity > 0)
                                         <label for="quantity">Quantity</label>
                                         <div class="input-group text-center mb-3" style="width:130px">
                                             <button class="input-group-text decrement-btn">-</button>
-                                            <input type="text" name="quantity" class="form-control text-center qty-input"
-                                                value="{{ $item->prod_qty }}">
+                                            <input type="text" name="quantity" class="form-control text-center qty-input" value="1">
                                             <button class="input-group-text increment-btn">+</button>
                                         </div>
                                         <h6 class="badge bg-success">In Stock</h6>

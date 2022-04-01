@@ -13,6 +13,7 @@ class RatingController extends Controller
 {
     public function store(Request $request)
     {
+
         $stars_rated = $request->input('product_rating');
         $prod_id = $request->input('prod_id');
         $product_check = Product::where('id',$prod_id)->where('status','1')->first();

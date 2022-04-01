@@ -114,7 +114,6 @@
                                             <td>{{ $item->products->selling_price }}</td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                             <hr>
