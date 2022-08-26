@@ -74,4 +74,5 @@ font-weight: 700;
     bottom: 10px;
     left: 10px;
     position: fixed;
+    z-index: 50;
 }

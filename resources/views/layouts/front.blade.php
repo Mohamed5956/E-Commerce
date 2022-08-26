@@ -40,7 +40,7 @@
 
     <div class="whatsapp-chat">
         <a href="https://wa.me/+201062535301?text=I'm%20interested%20in%20your%20shop" target="_blank">
-            <img src="{{ asset('assets/images/whatsapp.png') }}" alt="whatsapp" height="80px" width="80px">
+            <img src="{{ asset('assets/images/whatsapp.png') }}" alt="whatsapp" height="40px" width="40px">
         </a>
     </div>
 

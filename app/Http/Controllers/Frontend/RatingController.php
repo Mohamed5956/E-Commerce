@@ -16,7 +16,7 @@ class RatingController extends Controller
 
         $stars_rated = $request->input('product_rating');
         $prod_id = $request->input('prod_id');
-        $product_check = Product::where('id',$prod_id)->where('status','1')->first();
+        $product_check = Product::where('id',$prod_id)->first();
         if($product_check){
             $verified_purchase = Order::where('orders.user_id',Auth::id())
             ->join('order_items','orders.id','order_items.order_id')
@@ -24,7 +24,7 @@ class RatingController extends Controller
 
             if($verified_purchase->count() > 0){
                 $existing_rating = Rating::where('user_id',Auth::id())->where('prod_id',$prod_id)->first();
-                // dd($existing_rating);
+
                 if($existing_rating)
                 {
                     $existing_rating->stars_rated = $stars_rated ;

@@ -47,9 +47,9 @@
                                         value="{{ $item->prod_qty }}">
                                     <button class="input-group-text changeQuantity increment-btn">+</button>
                                 </div>
-                                @php
+                                {{-- @php
                                     $total += $item->products->selling_price * $item->prod_qty;
-                                @endphp
+                                @endphp --}}
                                 @else
                                 <h6 class="badge bg-danger">Out Of Stock</h6>
                             @endif
@@ -59,8 +59,9 @@
                         </div>
                     </div>
                     @php
-                        $total = $item->products->selling_price * $item->prod_qty;
-                    @endphp
+                        $total += $item->products->selling_price * $item->prod_qty;
+                        @endphp
+                        {{-- @dd($total); --}}
                 @endforeach
             </div>
             <div class="card-footer">
