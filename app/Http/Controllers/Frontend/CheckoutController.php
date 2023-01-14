@@ -33,7 +33,7 @@ class CheckoutController extends Controller
             $total_price += $item->products->selling_price * $item->prod_qty;
         }
         $total_price = $total_price;
-        return view('frontend.checkout', ['cart' => $cartItems]);
+        return view('frontend.checkout', ['cart' => $cartItems , 'total_price' => $total_price]);
     }
 
     public function placeorder(OrderInfoRequest $request)
